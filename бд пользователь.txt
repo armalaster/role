@@ -1,0 +1,26 @@
+CREATE TABLE [Member] (
+	IDMember integer NOT NULL,
+	Name varchar(200) NOT NULL,
+	Role varchar(255) NOT NULL,
+  CONSTRAINT [PK_MEMBER] PRIMARY KEY CLUSTERED
+  (
+  [IDMember] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Role] (
+	RoleMember varchar(255) NOT NULL,
+  CONSTRAINT [PK_ROLE] PRIMARY KEY CLUSTERED
+  (
+  [RoleMember] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+ALTER TABLE [Member] WITH CHECK ADD CONSTRAINT [Member_fk0] FOREIGN KEY ([Role]) REFERENCES [Role]([RoleMember])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Member] CHECK CONSTRAINT [Member_fk0]
+GO
+
